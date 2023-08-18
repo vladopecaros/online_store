@@ -42,7 +42,7 @@ export function Checkout() {
           <td>Size</td>
           <td>Cost</td>
 
-          {location.state.Purchases.map((Purchase: any) => (
+          {location.state[0].map((Purchase: any) => (
             <tr>
               <td>{Purchase.Amount}</td>
               <td>
@@ -59,7 +59,7 @@ export function Checkout() {
           ))}
         </ol>
         <h1>
-          With total cost of {location.state.totalCost}{" "}
+          With total cost of {location.state[1]}{" "}
           <button
             style={{ width: "10%", height: "50px", fontSize: "auto" }}
             onClick={() => setPay(true)}
