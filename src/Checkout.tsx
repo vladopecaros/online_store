@@ -31,20 +31,20 @@ export function Checkout() {
           </Link>
         </div>
         <h1>Dear customer, heres a list of your orders</h1>
-        <ol
+        <table
           style={{
             border: "1px solid black",
             fontSize: "18pt",
             width: "100%",
           }}
         >
-          <td>Amount</td>
-          <td>Article</td>
-          <td>Size</td>
-          <td>Cost</td>
+          <th>Amount</th>
+          <th>Article</th>
+          <th>Size</th>
+          <th>Cost</th>
 
-          {location.state[0].map((Purchase: any) => (
-            <tr>
+          {location.state[0].map((Purchase: any, index: number) => (
+            <tr key={"tr_"+index}>
               <td>{Purchase.Amount}</td>
               <td>
                 <img
@@ -58,7 +58,7 @@ export function Checkout() {
               <td>{Purchase.LotPrice}</td>
             </tr>
           ))}
-        </ol>
+        </table>
         <h1>
           With total cost of {location.state[1]}{" "}
           <button

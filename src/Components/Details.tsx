@@ -26,10 +26,10 @@ export function Details(props: Propovi) {
   const NextPhoto = () => {
     if (viewingPhoto < NumOfPhotos - 1) {
       setviewingPhoto(viewingPhoto + 1);
-      console.log(viewingPhoto);
+      
     } else {
       setviewingPhoto(0);
-      console.log(viewingPhoto);
+      
     }
   };
   const PrevPhoto = () => {
@@ -50,7 +50,7 @@ export function Details(props: Propovi) {
       }
     );
 
-    console.log(a);
+    
     setNumOfPhotos(a);
   };
 
@@ -90,7 +90,7 @@ export function Details(props: Propovi) {
             {Articles.find(
               (i) => i.Id === Number(props.viewedArticle)
             )?.Photos.map((Photos, photoindex) => (
-              <div>
+              
                 <div
                   key={"Div" + photoindex}
                   id={"" + photoindex}
@@ -147,7 +147,7 @@ export function Details(props: Propovi) {
                     </a>
                   </div>
                 </div>
-              </div>
+              
             ))}
             <DetailsSubPanel
               totalCost={props.totalCost}
