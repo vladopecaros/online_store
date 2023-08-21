@@ -186,8 +186,9 @@ export function Cart(props: Propovi) {
           >
             Total: {props.totalCost}
           </p>
-          <Link to="/checkout" state={[props.Purchases, props.totalCost]}>
+          <Link to="/checkout" style={{display: props.totalCost==0?"none":"block"}}state={[props.Purchases, props.totalCost]}>
             <button
+            
               style={{
                 height: "45px",
                 right: "-00px",
