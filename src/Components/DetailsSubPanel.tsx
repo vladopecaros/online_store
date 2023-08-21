@@ -33,15 +33,7 @@ function createPurchase(
 export function DetailsSubPanel(props: Propovi) {
   const [clickedSize, setClickedSize] = useState("");
 
-  function loadFromCookies() {
-    const cookies = new Cookies();
-    const cookieExists = cookies.get("TheCart") !== undefined;
-    if (!cookieExists) {
-      cookies.set("TheCart", [], { path: "/", maxAge: 36000 }); // Expires in 10 hours
-    } else {
-      const TheCookie = cookies.get("TheCart") || [];
-    }
-  }
+
 
   //Cart->
   function AddToCart(
@@ -79,7 +71,7 @@ export function DetailsSubPanel(props: Propovi) {
         props.setPurchases((prevPurchases) => {
           const updatedPurchases = [...prevPurchases, newPurchase];
           props.setCartiItemCount((prevItemCount) => prevItemCount + 1);
-          console.log(updatedPurchases);
+          
           return updatedPurchases;
         });
         setClickedSize("");
@@ -89,7 +81,8 @@ export function DetailsSubPanel(props: Propovi) {
           const cookies = new Cookies();
           const TheCookie = cookies.get("TheCart") || [];
           TheCookie.push(newPurchase);
-          console.log(TheCookie);
+          cookies.set("TheCart", TheCookie, { path: "/", maxAge: 36000 }); // Expires in 10 hours
+          
         }
       }
     } catch {

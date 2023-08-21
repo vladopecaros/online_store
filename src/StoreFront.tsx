@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SidePanel } from "./Components/SidePanel";
 import { ArticleDisplay } from "./Components/ArticleDisplay";
 import { Details } from "./Components/Details";
 import { Cart } from "./Components/Cart";
 import Cookies from "universal-cookie/cjs/Cookies";
+import { Cakes } from "./Components/CookieFinder";
+import { Articles } from "./Articles";
 //////////////////////////////////////////
 //Classes->
 export class Purchase {
@@ -27,6 +29,7 @@ export class Purchase {
   }
 }
 //
+
 export function Storefront() {
   //useState consts->
   const [Category, setCategory] = useState("All");
@@ -38,18 +41,12 @@ export function Storefront() {
   const [Purchases, setPurchases] = useState<Purchase[]>([]);
   const [totalCost, setTotalCost] = useState(0);
 
-  function Cackes() {
-    const cookies = new Cookies();
-    const cookieExists = cookies.get("TheCart") !== undefined;
-    if (!cookieExists) {
-      cookies.set("TheCart", [], { path: "/", maxAge: 36000 }); // Expires in 10 hours
-    }
-  }
+ 
 
   return (
     <>
+    {Cakes((0),(setPurchases),(setTotalCost), (setCartiItemCount))}
       <div
-        onLoad={() => Cackes}
         style={{
           textAlign: "center",
           backgroundColor: "#007200",

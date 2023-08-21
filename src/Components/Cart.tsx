@@ -2,6 +2,7 @@ import { Purchase } from "../StoreFront";
 import { Articles } from "../Articles";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
+import { DeleteCakes } from "./CookieFinder";
 
 interface Propovi {
   Purchases: Purchase[];
@@ -150,13 +151,14 @@ export function Cart(props: Propovi) {
                   border: "1px solid red",
                   cursor: "pointer",
                 }}
-                onClick={() =>
+                onClick={() => {
                   removeFromCart(
                     Purchase.Id,
                     Purchase.PurchaseId,
                     Purchase.Amount
-                  )
-                }
+                  );
+                  DeleteCakes((Purchase.PurchaseId), (props.setPurchases), (props.setTotalCost), (props.setCartiItemCount));
+                }}
               >
                 &#x2715;
               </button>

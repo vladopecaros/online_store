@@ -1,7 +1,8 @@
 import { useLocation, Link } from "react-router-dom";
 import { Articles } from "./Articles";
 import { useState } from "react";
-
+import Cookies from "universal-cookie";
+const cookies=new Cookies;
 export function Checkout() {
   const location = useLocation();
   console.log(location);
@@ -26,7 +27,7 @@ export function Checkout() {
           Thank You For Shopping With Us.
           <br />
           <Link to="/index">
-            <button style={{ width: "50px", height: "25px" }}>Close</button>
+            <button onClick={()=>(cookies.set("TheCart", [], { path: "/", maxAge: 36000 }))} style={{ width: "50px", height: "25px" }}>Close</button>
           </Link>
         </div>
         <h1>Dear customer, heres a list of your orders</h1>
